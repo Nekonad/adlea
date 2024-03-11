@@ -22,7 +22,7 @@
                   <h1
                     class="name-female font-title animate__animated animate__fadeInLeft"
                   >
-                    Ruliana
+                    Rulliana
                   </h1>
                   <h4
                     class="name-and font-and animate__animated animate__zoomIn"
@@ -222,6 +222,7 @@ export default defineComponent({
 }
 /* Button Hover & Action */
 .btn-cover {
+  color: #000;
   background-color: transparent;
   padding: 6px 20px;
   align-items: center;

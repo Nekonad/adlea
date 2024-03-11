@@ -7,7 +7,7 @@
             <p>The Wedding of</p>
             <h1>
               Bayu & <br />
-              Ruli
+              Rulliana
             </h1>
           </div>
         </div>

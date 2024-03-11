@@ -14,7 +14,7 @@
               <div class="photo-frame-female"></div>
               <div class="detail-name mt-3">
                 <h2 class="name mb-3">
-                  Ruliana<br />
+                  Rulliana<br />
                   Putri
                 </h2>
                 <p class="child-of mb-1 font-content">Putri dari:</p>
