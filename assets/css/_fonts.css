@@ -1,0 +1,69 @@
+/*    Dream-Avenue     */
+@font-face {
+  font-family: "Dream-Avenue";
+  font-style: normal;
+  src: url(~/assets/fonts/Dream-Avenue.ttf) format("truetype");
+}
+
+/*    Anmoretti     */
+@font-face {
+  font-family: "Amoretti";
+  font-style: normal;
+  src: url(~/assets/fonts/AmorettiDemo.otf) format("truetype");
+}
+
+/*    Robetson-Alternate     */
+@font-face {
+  font-family: "Robertson-Alternate";
+  font-style: normal;
+  src: url(~/assets/fonts/Robertson-Alternate.ttf) format("truetype");
+}
+
+/* Utilities Class Font */
+.font-title {
+  font-family: "Amoretti" !important;
+  font-weight: 500;
+  font-size: 64px;
+}
+
+.font-content {
+  font-family: "Montserrat" !important;
+  font-weight: 500;
+}
+.font-and {
+  font-family: "Dream-Avenue" !important;
+  font-weight: 600;
+}
+.font-card {
+  font-family: "Robetson-Alternate" !important;
+}
+
+:root {
+  --color-bg: #d9d9d9;
+  --color-pola: #ececec;
+  --color-and: #272727;
+}
+
+/* Utilitis class */
+.padding-balance {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.line-separator {
+  margin-top: 1em;
+  height: 1px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.line-separator-dark {
+  margin-top: 1em;
+  height: 1px;
+  background-color: var(--color-and);
+  width: 70%;
+}
+
+.bShadow {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 6px 12px rgba(0, 0, 0, 0.08);
+}

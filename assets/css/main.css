@@ -1,0 +1,290 @@
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* border: 1px solid red; */
+}
+
+body {
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+  /* overflow: none; */
+  /* min-height: 2000px; */
+}
+
+#main-warp {
+  overflow: hidden;
+}
+.cover {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+.coverno-scroll {
+  width: 100vw;
+  height: 100%;
+}
+
+#wrapperUndangan {
+  display: flex;
+}
+
+.separatorQuotes {
+  background-image: url(/assets/img/cover1.jpg);
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.image-separator-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.overlay-image-separator {
+  position: absolute;
+  z-index: 97;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #fff;
+  background: linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 40%,
+    rgba(0, 0, 0, 0.4)
+  );
+}
+.text-overlay {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+}
+.text-overlay p {
+  margin: 0;
+  letter-spacing: 0.2rem;
+  line-height: 1.3rem;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+}
+
+.text-overlay h1 {
+  font-weight: 600;
+  line-height: 2.2rem;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+
+/* ======================================================================== */
+.separatorUndangan {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.scrollabelUndangan {
+  width: 60%;
+  max-height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+#welcome {
+  width: 100%;
+  position: relative;
+  z-index: 9;
+}
+
+.wrapper {
+  /* background-image: url(/assets/img/flo11.jpg); */
+  background-color: var(--color-bg);
+  min-width: 100%;
+  min-height: 100vh;
+  /* background-size: cover;
+  background-position: 50%; */
+  position: relative;
+  z-index: -1;
+}
+
+.wrap-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  transition: all 0.5s;
+  z-index: 9;
+  margin: auto;
+  padding: 1em 2.2em;
+}
+
+/* START WELCOME WRAPPER CONTENT*/
+
+.new_premCover-top {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  /* padding: 2.5rem 0; */
+}
+#wedding-of {
+  text-align: start;
+  font-size: 18px !important;
+}
+
+.hero-pola {
+  display: flex;
+  margin: 1em 0;
+  height: 44vh;
+  background-color: var(--color-pola);
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  /* box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.35); */
+}
+.pola-img {
+  background-image: url(/assets/img/coverprem.jpg);
+  background-size: cover;
+  background-position: 50% 30%;
+  margin-top: 1vh;
+  width: 100%;
+  height: 35vh;
+}
+
+#welcome-text {
+  color: var(--color-and);
+  position: relative;
+  z-index: 11;
+}
+
+#welcome-text .couple-name h1 {
+  text-align: center !important;
+  line-height: 0.3 !important;
+  margin-left: unset;
+}
+
+#welcome-text .couple-name h4 {
+  text-align: center !important;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: unset;
+}
+
+/* media querry
+
+/* ==================== Laptop ====================*/
+@media (min-width: 1024px) {
+  html {
+    font-size: 100%;
+  }
+
+  .scrollabelUndangan {
+    width: 60%;
+  }
+  #welcome-section .image-content .image-overlay .heading-title {
+    padding: 1em 2em;
+  }
+
+  #quote {
+    padding: 2em 1em;
+  }
+
+  #coupleProfile {
+    padding: 30px 3em 30px 3em;
+  }
+
+  .female-profile .profile-detail,
+  .male-profile .profile-detail {
+    padding: 1em 2em;
+
+    #ourGallery,
+    #weddingDetail {
+      padding: 30px 2em;
+    }
+    #section-bottom,
+    #payGift {
+      padding: 30px 2em 30px 2em;
+    }
+  }
+}
+
+/* ==================== tablet ====================  */
+@media (min-width: 768px) and (max-width: 1023px) {
+  html {
+    font-size: 100%;
+  }
+  .separatorQuotes {
+    display: none;
+  }
+  .scrollabelUndangan {
+    width: 100%;
+  }
+  #welcome-section .image-content .image-overlay .heading-title {
+    max-width: 1023px;
+    padding: 5em 0em !important;
+    padding-bottom: 15em !important;
+  }
+  .scroll-down {
+    left: 12em;
+    bottom: 12em;
+  }
+
+  .wrap-overlay,
+  #quote,
+  #coupleProfile,
+  #ourGallery,
+  #weddingDetail,
+  #section-bottom,
+  #payGift {
+    padding: 2em 10em !important;
+  }
+  .female-profile .profile-detail,
+  .male-profile .profile-detail {
+    padding: 1em 3em !important;
+  }
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  html {
+    font-size: 65%;
+  }
+  .separatorQuotes {
+    display: none;
+  }
+  .scrollabelUndangan {
+    width: 100%;
+  }
+  #welcome-section .image-content .image-overlay .heading-title {
+    padding: 1em 2em;
+  }
+
+  #quote {
+    padding: 2em 1em;
+  }
+
+  #coupleProfile {
+    padding: 30px 3em 30px 3em;
+  }
+
+  .female-profile .profile-detail,
+  .male-profile .profile-detail {
+    padding: 1em 2em;
+
+    #ourGallery,
+    #weddingDetail {
+      padding: 30px 2em;
+    }
+    #section-bottom,
+    #payGift {
+      padding: 30px 2em 30px 2em;
+    }
+  }
+}
