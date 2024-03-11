@@ -11,7 +11,7 @@
           </div>
           <div id="welcome-text">
             <div class="couple-name">
-              <h1 class="name-female font-title">Ruliana</h1>
+              <h1 class="name-female font-title">Rulliana</h1>
               <h4 class="name-and font-and" style="font-size: 2rem">&</h4>
               <h1 class="name-male font-title">Bayu</h1>
             </div>
