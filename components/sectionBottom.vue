@@ -1,6 +1,6 @@
-<template lang="">
+<template>
   <div id="section-bottom" class="cover">
-    <section id="wishes">
+    <div id="wishes-form">
       <div class="cover">
         <div
           align="center"
@@ -19,43 +19,50 @@
         </div>
         <div class="line-separator-dark mt-2" style="width: 100%"></div>
         <div class="wishes container pt-4 slideDown" ref="slideDown">
-          <form>
+          <form @submit.prevent="submitForm">
             <fieldset class="form-group">
               <input
+                v-model="formData.nameGuest"
                 type="text"
                 placeholder="Nama Tamu"
                 required="required"
                 aria-required="true"
                 maxLenght="200"
                 class="form-control"
-                id="exampleInputEmail1"
+                autocomplete="off"
+                spellcheck="false"
               />
             </fieldset>
             <fieldset class="form-group mt-3 mb-3">
               <select
-                v-model="selectedAttendance"
+                v-model="formData.confirmOfAttendance"
                 class="custom form-select"
                 aria-label="Default select example"
               >
                 <option selected disabled :value="null">
                   Konfirmasi Kehadiran
                 </option>
-                <option v-for="person in persons" :value="person">
+                <option
+                  v-for="person in persons"
+                  :value="person.name"
+                  :key="person.personId"
+                >
                   {{ person.name }}
                 </option>
               </select>
             </fieldset>
-            <div v-if="selectedGuest">
+            <div v-if="formData.confirmOfAttendance === 'Hadir'">
               <fieldset class="form-group mt-3 mb-3">
                 <select
-                  v-model="selectedGuestPerson"
+                  v-model="formData.totalAttendance"
                   class="form-select"
                   aria-label="Default select example"
                 >
                   <option disabled selected :value="null">Jumlah Hadir</option>
                   <option
-                    v-for="person in selectedGuest.person"
+                    v-for="person in guest[0].person"
                     :value="person"
+                    :key="person"
                   >
                     {{ person }}
                   </option>
@@ -64,6 +71,7 @@
             </div>
             <fieldset class="form-group mt-3 mb-3">
               <textarea
+                v-model="formData.messageText"
                 placeholder="Tulis Ucapan"
                 required="required"
                 rows="3"
@@ -71,22 +79,35 @@
                 aria-required="true"
                 maxlenght="200"
                 class="form-control"
+                spellcheck="false"
               ></textarea>
             </fieldset>
-            <NuxtLink to="" target="_blank">
-              <div align="center" class="btnBtm pt-2 pb-4">
-                <button
-                  type="button"
-                  class="btn-lg-rounded btn-Btm font-content"
-                >
-                  SEND
-                </button>
-              </div>
-            </NuxtLink>
+
+            <div align="center" class="btnBtm pt-2 pb-4">
+              <button type="submit" class="btn btn-Btm font-content">
+                SEND
+              </button>
+            </div>
           </form>
+          <p
+            v-if="formError"
+            class="error-message text-danger wow animate__animated animate__slideInDown mb-0"
+          >
+            {{ formErrorMessage }}
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+    <div class="wish-list slideDownSec" ref="slideDownSec">
+      <div
+        class="wish-item"
+        v-for="(wish, index) in reversedWishList"
+        :key="index"
+      >
+        <div class="name font-content">{{ wish.nameGuest }}</div>
+        <div class="pesan font-content">" {{ wish.messageText }} "</div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -97,23 +118,51 @@ export default {
       observer: null,
       lastY: 0,
       selectedAttendance: null,
+      formData: {
+        nameGuest: "",
+        confirmOfAttendance: null,
+        totalAttendance: null,
+        messageText: "",
+      },
       persons: [
         { name: "Hadir", personId: 1 },
-        { name: "Tidak Hadir", personId: 2 },
+        { name: "Tidak Hadir", personId: 0 },
       ],
       guest: [{ id: 1, name: "person 1", person: ["1", "2"] }],
-      selectedGuestPerson: null,
+      formSubmitted: false,
+      time: null,
+      wishList: [],
+      formError: false,
     };
   },
   computed: {
+    //for select totalConfirm
     selectedGuest() {
       const selected = this.selectedAttendance;
       return selected
         ? this.guest.find((x) => x.id === selected.personId)
         : null;
     },
+    reversedWishList() {
+      // Balik urutan elemen dalam wishList sehingga input terbaru berada di bagian paling atas
+      return this.wishList.slice().reverse();
+    },
+    //for error not input confirmAttendance
+    formErrorMessage() {
+      if (!this.formData.confirmOfAttendance) {
+        return "Konfirmasi kehadiran harus diisi!";
+      } else if (
+        this.formData.confirmOfAttendance === "Hadir" &&
+        !this.formData.totalAttendance
+      ) {
+        return "Jumlah hadir harus diisi!";
+      } else {
+        return ""; // pesan kosong jika tidak ada error
+      }
+    },
   },
   mounted() {
+    this.getDataFromAPI(); // GET DATA API
     const obsOptions = {
       threshold: 0.1,
     };
@@ -124,9 +173,13 @@ export default {
 
     // Observasi elemen slideLeft dan animatedElement
     const slideDown = this.$refs.slideDown;
+    const slideDownSec = this.$refs.slideDownSec;
 
     if (slideDown) {
       this.observer.observe(slideDown);
+    }
+    if (slideDownSec) {
+      this.observer.observe(slideDownSec);
     }
     const observer = new IntersectionObserver(this.handleAnimateIntersection, {
       threshold: 0.1,
@@ -134,6 +187,99 @@ export default {
     observer.observe(this.$refs.animatedElement);
   },
   methods: {
+    // GET DATA
+    async getDataFromAPI() {
+      try {
+        const response = await fetch(
+          "https://65f09bffda8c6584131c2339.mockapi.io/rsvpv1/rsvpv1"
+        );
+        if (response.ok) {
+          const data = await response.json();
+          //simpan data dari API ke dalam wishList
+          this.wishList = data;
+        } else {
+          console.error("Gagal mengambil data:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Terjadi kesalahan:", error);
+      }
+    },
+
+    // metode untuk menambahkan ucapan ke dalam wishList
+    addWishToList(nameGuest, messageText) {
+      this.wishList.push({ nameGuest, messageText });
+    },
+
+    // POST AND PUT
+    async submitForm() {
+      try {
+        // Validasi konfirmasi kehadiran
+        if (!this.formData.confirmOfAttendance) {
+          this.formError = true;
+          setTimeout(() => {
+            this.formError = false;
+          }, 3000);
+          return;
+        }
+
+        // Validasi total hadir jika konfirmasi kehadiran adalah "Hadir"
+        if (
+          this.formData.confirmOfAttendance === "Hadir" &&
+          !this.formData.totalAttendance
+        ) {
+          this.formError = true;
+          setTimeout(() => {
+            this.formError = false;
+          }, 3000);
+          return;
+        }
+
+        // Jika konfirmasi kehadiran adalah "Tidak Hadir", total kehadiran harus diisi
+        if (this.formData.confirmOfAttendance !== null) {
+          const response = await fetch(
+            "https://65f09bffda8c6584131c2339.mockapi.io/rsvpv1/rsvpv1",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                ...this.formData,
+                time: new Date().toLocaleString(),
+                // Include submission time
+              }),
+            }
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            // Submit PUT
+            this.addWishToList(data.nameGuest, data.messageText);
+            // Clear form submission
+            this.formData = {
+              nameGuest: "",
+              confirmOfAttendance: null,
+              totalAttendance: null,
+              messageText: "",
+              // Other form data
+            };
+            console.log("Form telah berhasil disubmit");
+          } else {
+            console.error("Gagal mengirim data:", response.statusText);
+          }
+        } else {
+          // Jika confirmOfAttendance atau totalAttendance masih null, tampilkan pesan kesalahan
+          this.formError = true;
+          setTimeout(() => {
+            this.formError = false;
+          }, 3000);
+        }
+      } catch (error) {
+        console.error("Terjadi kesalahan:", error);
+      }
+    },
+
     // Animate
     handleAnimateIntersection(entries) {
       entries.forEach((entry) => {
@@ -157,9 +303,26 @@ export default {
 };
 </script>
 <style lang="css">
+.error-message {
+  position: absolute;
+  align-items: start;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 2px;
+}
 .slideDown {
   opacity: 0;
   transform: translateY(50px);
+}
+.slideDownSec {
+  opacity: 0;
+  transform: translateY(50px);
+}
+.slideDownSec.is-inViewport {
+  opacity: 1;
+  transition: 1.5s;
+  transform: translateY(0);
 }
 .slideDown.is-inViewport {
   opacity: 1;
@@ -194,10 +357,12 @@ export default {
 }
 .btn-Btm:hover {
   transform: translateY(-6px);
+  color: #fff;
+  background-color: #000;
   border-radius: 5px;
   transition: transform ease 0.2s;
   opacity: 1 !important;
-  box-shadow: 0px 2px 0px 1px #fff;
+  box-shadow: 0px 2px 0px 1px #8b8b8b;
 }
 
 .btn-Btm:active {
@@ -209,4 +374,36 @@ export default {
   box-shadow: 0px 0px 0px 0px #000;
 }
 /* Close button */
+
+.wish-list {
+  max-height: 400px;
+  overflow: auto;
+  padding: 2em 1em;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.wish-item {
+  padding: 1px;
+  margin-bottom: 2em;
+}
+
+.wish-item .name {
+  font-weight: 700;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  word-spacing: 1px;
+}
+.wish-item .pesan {
+  font-size: 14px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+.wish-item .pesan::first-letter {
+  text-transform: uppercase;
+}
 </style>
