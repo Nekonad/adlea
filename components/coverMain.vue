@@ -150,7 +150,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   position: relative;
-  background-image: url("~/assets/img/cover1.jpg");
+  background-image: url("/img/cover1.jpg");
   background-size: cover;
   background-position: 50% 50%;
 }

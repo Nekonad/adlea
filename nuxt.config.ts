@@ -1,15 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
+  spaLoadingTemplate: true,
   devtools: { enabled: false },
   pages: false,
   app: {
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
-      title: "Adlea Minimal",
-      meta: [{ name: "description", content: "My amazing site." }],
+      title: "Adlea Minimalist",
+      meta: [{ name: "description", content: "hello." }],
       //  link  //
       link: [
+        { rel: "icon", type: "image/png", href: "/favicon.ico" },
         //  link Animate  //
         {
           rel: "stylesheet",
