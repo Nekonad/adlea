@@ -6,9 +6,9 @@
           <div class="overlay-cover-top"></div>
           <div class="overlay-cover-bottom"></div>
           <div class="image-overlay">
-            <div class="heading-title">
+            <div class="heading-title text-light">
               <p
-                class="animate__animated animate__fadeInDown date font-content"
+                class="animate__animated animate__fadeInDown date font-content text-light"
               >
                 12 <b>.</b> 12 <b>.</b> 24
               </p>
@@ -46,7 +46,7 @@
                 >
                   <button
                     type="button"
-                    class="btn-lg-rounded btn-cover font-content"
+                    class="btn-lg btn-cover font-content text-light"
                     @click="hideWelcomeSection"
                   >
                     Buka Undangan
@@ -146,13 +146,13 @@ export default defineComponent({
 }
 
 #welcome-section .image-content {
-  background-color: #d9d9d9;
+  /* background-color: #d9d9d9; */
   width: 100%;
   height: 100%;
   position: relative;
-  /* background-image: url("~/assets/img/cover.jpg");
+  background-image: url("~/assets/img/cover1.jpg");
   background-size: cover;
-  background-position: 50% 50%; */
+  background-position: 50% 50%;
 }
 #welcome-section .image-content .image-overlay {
   display: flex;
@@ -189,7 +189,7 @@ export default defineComponent({
   height: 2px;
   max-width: 250px;
   width: 70%;
-  background: black;
+  background: #fff;
   display: block;
   position: absolute;
   margin: auto;
@@ -222,25 +222,28 @@ export default defineComponent({
 }
 /* Button Hover & Action */
 .btn-cover {
-  color: #000;
-  background-color: transparent;
+  color: #fff;
+  background-color: #00000025;
   padding: 6px 20px;
   align-items: center;
-  border: 1px solid #272727;
+  border: 1px solid #ffffff;
   border-radius: 25px;
   transition: all ease-in 0.2s !important;
 }
 .btn-cover:hover {
+  font-weight: 600;
   transform: translateY(-6px);
+  background-color: #fff;
   border-radius: 5px;
+  color: #0a0a0a !important;
   transition: transform ease 0.2s;
   opacity: 1 !important;
-  box-shadow: 0px 2px 0px 1px #000;
+  box-shadow: 0px 2px 0px 1px #ffffff !important;
 }
 .btn-cover:active {
   font-weight: 600;
-  color: #fff;
-  background-color: #000;
+  color: #fff !important;
+  background-color: #00000054;
   transform: translateY(2px);
   transition: transform ease 0.5s;
   box-shadow: 0px 0px 0px 0px #000;
@@ -248,7 +251,7 @@ export default defineComponent({
 /* Close button */
 
 /* Overlay */
-/* .overlay-cover-bottom,
+.overlay-cover-bottom,
 .overlay-cover-top {
   width: 100%;
   z-index: 2;
@@ -263,8 +266,8 @@ export default defineComponent({
   );
   height: 70%;
   bottom: 0;
-} */
-/* overlay close */
+}
+/* overlay close
 
 /* AUDIOOOOOOO */
 .background-music {
@@ -280,7 +283,7 @@ export default defineComponent({
   align-items: center;
   left: 1em;
   top: 4em;
-  background-color: #00a8ff;
+  background-color: #84a98c;
   border: none;
   border-radius: 50%;
   line-height: 0;
@@ -297,7 +300,7 @@ export default defineComponent({
   display: block;
   width: 50px;
   height: 50px;
-  background: #068ee5;
+  background: #84a98c;
   border-radius: 50%;
   animation: pulse-border 1500ms ease-out infinite;
 }
@@ -308,7 +311,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   transform-origin: center;
-  color: #fff;
+  color: #cad2c5;
 }
 @keyframes pulse-border {
   0% {
@@ -330,7 +333,7 @@ export default defineComponent({
 }
 .music-control.paused {
   animation: none;
-  background-color: #006192;
+  background-color: #84a98c;
 }
 .music-control.paused:before {
   animation: none;
