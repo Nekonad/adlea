@@ -17,7 +17,7 @@
             <ourGallery />
             <payGift />
             <sectionBottom />
-            <loveStory />
+            <!-- <loveStory /> -->
           </div>
         </div>
         <!-- CLOSE SECTION -->
