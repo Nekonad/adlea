@@ -1,5 +1,5 @@
 <template>
-  <div id="quote">
+  <section id="quote">
     <div class="container p-0">
       <div
         class="containerScreen animate__animated"
@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {

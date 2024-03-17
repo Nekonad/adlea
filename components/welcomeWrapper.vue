@@ -1,5 +1,5 @@
 <template>
-  <div id="welcome">
+  <section id="welcome">
     <div class="wrapper container">
       <div class="wrap-overlay middle top">
         <div class="new_premCover-top upSlide" ref="upSlide">
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script setup(props) { }>
 import { ref } from "@vue/reactivity";

@@ -1,5 +1,5 @@
 <template lang="">
-  <div id="payGift">
+  <section id="payGift">
     <div
       align="center"
       class="title-heading m-0 animate__animated"
@@ -177,7 +177,7 @@
         </div>
       </Transition>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {

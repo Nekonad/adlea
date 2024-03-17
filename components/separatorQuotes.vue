@@ -1,6 +1,6 @@
 <template>
   <Transition name="fade">
-    <div class="separatorQuotes">
+    <aside class="separatorQuotes">
       <div class="image-separator-bg">
         <div class="overlay-image-separator">
           <div class="text-overlay text-light">
@@ -12,7 +12,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </aside>
   </Transition>
 </template>
 

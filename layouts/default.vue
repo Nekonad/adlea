@@ -2,10 +2,13 @@
   <Body>
     <div id="main-wrap" class="cover no-scroll">
       <coverMain />
+
+      <!-- aside -->
       <div id="wrapperUndangan">
         <separatorQuotes />
+
+        <!-- SECTION -->
         <div class="scrollabelUndangan">
-          <!-- <audioPlayer /> -->
           <welcomeWrapper />
           <div class="content-layout cover">
             <quote />
@@ -14,8 +17,10 @@
             <ourGallery />
             <payGift />
             <sectionBottom />
+            <loveStory />
           </div>
         </div>
+        <!-- CLOSE SECTION -->
       </div>
     </div>
   </Body>

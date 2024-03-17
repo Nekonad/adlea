@@ -1,5 +1,5 @@
 <template>
-  <div id="section-bottom" class="cover">
+  <section id="section-bottom" class="cover">
     <div id="wishes-form">
       <div class="cover">
         <div
@@ -105,10 +105,10 @@
         :key="index"
       >
         <div class="name font-content">{{ wish.nameGuest }}</div>
-        <div class="pesan font-content">" {{ wish.messageText }} "</div>
+        <div class="pesan font-content">{{ wish.messageText }}</div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {
@@ -385,25 +385,26 @@ export default {
 
 .wish-item {
   padding: 1px;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #00000050;
 }
 
 .wish-item .name {
-  font-weight: 700;
-  border-bottom: 1px solid;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  text-transform: uppercase;
+  font-weight: 600;
+  text-transform: capitalize;
   font-size: 14px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   word-spacing: 1px;
 }
 .wish-item .pesan {
-  font-size: 14px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
   display: inline-block;
   text-transform: capitalize;
 }
-.wish-item .pesan::first-letter {
+.wish-item .pesan::first-letter,
+.wish-item .name::first-letter {
   text-transform: uppercase;
 }
 </style>

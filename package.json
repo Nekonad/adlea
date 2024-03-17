@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.35",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.0.1",
     "nuxt": "^3.10.3",

@@ -1,5 +1,5 @@
 <template lang="">
-  <div id="coupleProfile">
+  <section id="coupleProfile">
     <div align="center" class="couple-heading m-0">
       <p class="font-content mb-0">
         Dengan memohon Rahmat dan Ridho Allah SWT. Kami mengharapkan kehadiran
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {

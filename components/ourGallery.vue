@@ -1,5 +1,5 @@
 <template lang="">
-  <div id="ourGallery">
+  <section id="ourGallery">
     <div class="containerOurgallery">
       <div
         align="center"
@@ -10,65 +10,86 @@
         <h1 class="font-content mb-0">Our Gallery</h1>
         <div class="line-separator" style="width: 70%"></div>
       </div>
-      <div class="cover-gallery py-5">
-        <div class="row py-2 slideFirst" ref="slideFirst">
-          <div class="col-4">
-            <img
-              src="/img/thumbnail/1.jpg"
-              alt=""
-              class="img-fluid slide-item slideFirstItem"
-            />
+
+      <!-- FancyBox -->
+      <Fancybox
+        :options="{
+          Carousel: {
+            infinite: false,
+          },
+        }"
+      >
+        <div class="cover-gallery py-5">
+          <!-- ROW 1 -->
+          <div class="row py-2 slideFirst" ref="slideFirst">
+            <div class="col-4">
+              <a data-fancybox="gallery" href="/img/thumbnail/1.jpg">
+                <img
+                  src="/img/thumbnail/1.jpg"
+                  alt=""
+                  class="img-fluid slide-item slideFirstItem"
+              /></a>
+            </div>
+            <div class="col-4">
+              <a data-fancybox="gallery" href="/img/thumbnail/2.jpg">
+                <img
+                  src="/img/thumbnail/2.jpg"
+                  alt=""
+                  class="img-fluid slide-item slideFirstItem"
+                />
+              </a>
+            </div>
+            <div class="col-4">
+              <a data-fancybox="gallery" href="/img/thumbnail/3.jpg">
+                <img
+                  src="/img/thumbnail/3.jpg"
+                  alt=""
+                  class="img-fluid slide-item slideFirstItem"
+              /></a>
+            </div>
           </div>
-          <div class="col-4">
-            <img
-              src="/img/thumbnail/2.jpg"
-              alt=""
-              class="img-fluid slide-item slideFirstItem"
-            />
+          <!-- ROW 2 -->
+          <div class="row justify-content-between py-2 slideSec" ref="slideSec">
+            <div class="col-8">
+              <a data-fancybox="gallery" href="/img/thumbnail/4.jpg">
+                <img
+                  src="/img/thumbnail/4.jpg"
+                  alt=""
+                  class="img-fluid slide-item slideSecItem"
+              /></a>
+            </div>
+            <div class="col-4">
+              <a data-fancybox="gallery" href="/img/thumbnail/5.jpg">
+                <img
+                  src="/img/thumbnail/5.jpg"
+                  alt=""
+                  class="img-fluid slide-item slideSecItem"
+              /></a>
+            </div>
           </div>
-          <div class="col-4">
-            <img
-              src="/img/thumbnail/3.jpg"
-              alt=""
-              class="img-fluid slide-item slideFirstItem"
-            />
+          <!-- ROW 3 -->
+          <div class="row py-2 slideThird" ref="slideThird">
+            <div class="col-3">
+              <a data-fancybox="gallery" href="/img/thumbnail/6.jpg">
+                <img
+                  src="/img/thumbnail/6.jpg"
+                  alt=""
+                  class="img-fluid slide-item slideThirdItem"
+              /></a>
+            </div>
+            <div class="col-9">
+              <a data-fancybox="gallery" href="/img/thumbnail/7.jpg">
+                <img
+                  src="/img/thumbnail/7.jpg"
+                  alt=""
+                  class="img-fluid slide-item slideThirdItem"
+              /></a>
+            </div>
           </div>
         </div>
-        <div class="row justify-content-between py-2 slideSec" ref="slideSec">
-          <div class="col-8">
-            <img
-              src="/img/thumbnail/4.jpg"
-              alt=""
-              class="img-fluid slide-item slideSecItem"
-            />
-          </div>
-          <div class="col-4">
-            <img
-              src="/img/thumbnail/5.jpg"
-              alt=""
-              class="img-fluid slide-item slideSecItem"
-            />
-          </div>
-        </div>
-        <div class="row py-2 slideThird" ref="slideThird">
-          <div class="col-3">
-            <img
-              src="/img/thumbnail/6.jpg"
-              alt=""
-              class="img-fluid slide-item slideThirdItem"
-            />
-          </div>
-          <div class="col-9">
-            <img
-              src="/img/thumbnail/7.jpg"
-              alt=""
-              class="img-fluid slide-item slideThirdItem"
-            />
-          </div>
-        </div>
-      </div>
+      </Fancybox>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {

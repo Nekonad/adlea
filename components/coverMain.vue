@@ -1,73 +1,69 @@
 <template>
-  <div>
-    <transition name="fade">
-      <section id="welcome-section" v-show="!isContentHidden">
-        <div class="image-content">
-          <div class="overlay-cover-top"></div>
-          <div class="overlay-cover-bottom"></div>
-          <div class="image-overlay">
-            <div class="heading-title text-light">
+  <transition name="fade">
+    <section id="welcome-section" v-show="!isContentHidden">
+      <div class="image-content">
+        <div class="overlay-cover-top"></div>
+        <div class="overlay-cover-bottom"></div>
+        <div class="image-overlay">
+          <div class="heading-title text-light">
+            <p
+              class="animate__animated animate__fadeInDown date font-content text-light"
+            >
+              12 <b>.</b> 12 <b>.</b> 24
+            </p>
+            <div class="title-cover">
               <p
-                class="animate__animated animate__fadeInDown date font-content text-light"
+                class="wedding-of font-content animate__animated animate__fadeInDown"
               >
-                12 <b>.</b> 12 <b>.</b> 24
+                The Wedding Of
               </p>
-              <div class="title-cover">
-                <p
-                  class="wedding-of font-content animate__animated animate__fadeInDown"
+              <div id="couple-name" class="couple-name">
+                <h1
+                  class="name-female font-title animate__animated animate__fadeInLeft"
                 >
-                  The Wedding Of
-                </p>
-                <div id="couple-name" class="couple-name">
-                  <h1
-                    class="name-female font-title animate__animated animate__fadeInLeft"
-                  >
-                    Rulliana
-                  </h1>
-                  <h4
-                    class="name-and font-and animate__animated animate__zoomIn"
-                  >
-                    &
-                  </h4>
-                  <h1
-                    class="name-male font-title animate__animated animate__fadeInRight"
-                  >
-                    Bayu
-                  </h1>
-                </div>
-                <p
-                  class="invite font-content animate__animated animate__fadeInUp"
+                  Rulliana
+                </h1>
+                <h4 class="name-and font-and animate__animated animate__zoomIn">
+                  &
+                </h4>
+                <h1
+                  class="name-male font-title animate__animated animate__fadeInRight"
                 >
-                  Kepada Yth. <br />Tamu Undangan
-                </p>
-                <div
-                  align="center"
-                  class="animate__animated animate__fadeInUp btnCover pt-2"
+                  Bayu
+                </h1>
+              </div>
+              <p
+                class="invite font-content animate__animated animate__fadeInUp"
+              >
+                Kepada Yth. <br />Tamu Undangan
+              </p>
+              <div
+                align="center"
+                class="animate__animated animate__fadeInUp btnCover pt-2"
+              >
+                <button
+                  type="button"
+                  class="btn-lg btn-cover font-content text-light"
+                  @click="hideWelcomeSection"
                 >
-                  <button
-                    type="button"
-                    class="btn-lg btn-cover font-content text-light"
-                    @click="hideWelcomeSection"
-                  >
-                    Buka Undangan
-                  </button>
-                </div>
+                  Buka Undangan
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </transition>
-
-    <div class="background-music">
-      <button @click="toggleAudio" class="music-control" ref="audioButton">
-        <i class="bi bi-disc"></i>
-        <!-- {{ playing ? "Pause Audio" : "Play Audio" }} -->
-      </button>
-      <audio ref="audio" loop :volume="volume">
-        <source src="/audio/locationUnknown.mp3" type="audio/mpeg" />
-      </audio>
-    </div>
+      </div>
+    </section>
+  </transition>
+  <!-- Audio -->
+  <div class="background-music">
+    <button @click="toggleAudio" class="music-control" ref="audioButton">
+      <i class="bi bi-disc"></i>
+      <!-- {{ playing ? "Pause Audio" : "Play Audio" }} -->
+    </button>
+    <audio ref="audio" loop :volume="volume">
+      <source src="/audio/locationUnknown.mp3" type="audio/mpeg" />
+    </audio>
   </div>
 </template>
 

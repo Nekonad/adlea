@@ -1,5 +1,5 @@
 <template lang="">
-  <div id="weddingDetail">
+  <section id="weddingDetail">
     <div
       align="center"
       class="title-heading m-0 animate__animated"
@@ -118,7 +118,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {
