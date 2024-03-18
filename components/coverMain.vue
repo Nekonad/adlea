@@ -58,7 +58,8 @@
   <!-- Audio -->
   <div class="background-music">
     <button @click="toggleAudio" class="music-control" ref="audioButton">
-      <i class="bi bi-disc"></i>
+      <i v-if="!playing" class="bi bi-volume-up-fill"></i>
+      <i v-else class="bi bi-volume-mute-fill"></i>
       <!-- {{ playing ? "Pause Audio" : "Play Audio" }} -->
     </button>
     <audio ref="audio" loop :volume="volume">
@@ -82,11 +83,15 @@ export default defineComponent({
       if (audio.value && audioButton.value) {
         if (audio.value.paused) {
           audio.value.play();
+          playing.value = true;
           audioButton.value.classList.remove("paused");
-          //kelas di css
+          audioButton.value.innerHTML = '<i class="bi bi-volume-up-fill"></i>';
         } else {
           audio.value.pause();
-          audioButton.value.classList.add("paused"); //kelas di css
+          playing.value = false;
+          audioButton.value.classList.add("paused");
+          audioButton.value.innerHTML =
+            '<i class="bi bi-volume-mute-fill"></i>';
         }
       }
     };
@@ -283,7 +288,7 @@ export default defineComponent({
   border: none;
   border-radius: 50%;
   line-height: 0;
-  animation: rotating 4s linear infinite;
+  /* animation: rotating 4s linear infinite; */
 }
 
 .music-control:before {
@@ -301,13 +306,14 @@ export default defineComponent({
   animation: pulse-border 1500ms ease-out infinite;
 }
 
-.music-control .bi-disc {
-  font-size: 30px;
+.music-control .bi-volume-up-fill,
+.music-control .bi-volume-mute-fill {
+  font-size: 25px;
   z-index: 10;
   align-items: center;
   justify-content: center;
   transform-origin: center;
-  color: #cad2c5;
+  color: #e4e4e4;
 }
 @keyframes pulse-border {
   0% {
@@ -334,7 +340,12 @@ export default defineComponent({
 .music-control.paused:before {
   animation: none;
 }
-.music-control.paused .bi-disc {
+
+.music-control.paused .bi-volume-up-fill {
+  color: #e4e4e4;
+}
+
+.music-control.paused .bi-volume-mute-fill {
   color: #e4e4e4;
 }
 </style>
