@@ -209,6 +209,7 @@ body {
       padding: 30px 2em;
     }
     #section-bottom,
+    #loveStory,
     #payGift {
       padding: 30px 2em 30px 2em;
     }
@@ -242,6 +243,7 @@ body {
   #ourGallery,
   #weddingDetail,
   #section-bottom,
+  #loveStory,
   #payGift {
     padding: 2em 10em !important;
   }
@@ -265,6 +267,9 @@ body {
   #welcome-section .image-content .image-overlay .heading-title {
     padding: 2em 2em;
   }
+  .scroll-down {
+    bottom: 12em !important;
+  }
 
   #quote {
     padding: 2em 1em;
@@ -283,8 +288,9 @@ body {
       padding: 30px 2em;
     }
     #section-bottom,
+    #loveStory,
     #payGift {
-      padding: 30px 2em 30px 2em;
+      padding: 30px 2em 2em 2em;
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <section id="section-bottom" class="cover">
+  <section id="section-bottom">
     <div id="wishes-form">
       <div class="cover">
         <div
@@ -331,7 +331,7 @@ export default {
 }
 #section-bottom {
   background-color: var(--color-bg);
-  padding: 30px 2em 30px 2em;
+  padding: 30px 2em 2em 2em;
   width: 100%;
   height: 100%;
 }
@@ -397,6 +397,8 @@ export default {
   word-spacing: 1px;
 }
 .wish-item .pesan {
+  font-weight: 600;
+  color: #0000008f;
   margin-bottom: 10px;
   padding-bottom: 10px;
   font-size: 12px;
