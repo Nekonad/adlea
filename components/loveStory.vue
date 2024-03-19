@@ -73,7 +73,7 @@ export default {
   mounted() {
     // customSlide
     const obsOptions = {
-      threshold: 0.2,
+      threshold: 0.5,
     };
     this.observer = new IntersectionObserver(this.inViewport, obsOptions);
 
@@ -84,7 +84,7 @@ export default {
 
     // Animate
     const observer = new IntersectionObserver(this.handleIntersection, {
-      threshold: 0.1,
+      threshold: 0.5,
     });
     observer.observe(this.$refs.animatedElement);
   },

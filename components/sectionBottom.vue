@@ -182,7 +182,7 @@ export default {
       this.observer.observe(slideDownSec);
     }
     const observer = new IntersectionObserver(this.handleAnimateIntersection, {
-      threshold: 0.1,
+      threshold: 0.5,
     });
     observer.observe(this.$refs.animatedElement);
   },

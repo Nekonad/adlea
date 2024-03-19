@@ -63,7 +63,7 @@
       <!-- {{ playing ? "Pause Audio" : "Play Audio" }} -->
     </button>
     <audio ref="audio" loop :volume="volume">
-      <source src="/audio/locationUnknown.mp3" type="audio/mpeg" />
+      <source src="/audio/Someone To Stay.mp3" type="audio/mpeg" />
     </audio>
   </div>
 </template>

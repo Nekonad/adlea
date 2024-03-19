@@ -210,6 +210,7 @@ body {
     }
     #section-bottom,
     #loveStory,
+    #sectionFooter,
     #payGift {
       padding: 30px 2em 30px 2em;
     }
@@ -243,6 +244,7 @@ body {
   #ourGallery,
   #weddingDetail,
   #section-bottom,
+  #sectionFooter,
   #loveStory,
   #payGift {
     padding: 2em 10em !important;
@@ -289,6 +291,7 @@ body {
     }
     #section-bottom,
     #loveStory,
+    #sectionFooter,
     #payGift {
       padding: 30px 2em 2em 2em;
     }

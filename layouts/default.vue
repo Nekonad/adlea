@@ -18,6 +18,7 @@
             <payGift />
             <sectionBottom />
             <loveStory />
+            <sectionFooter />
           </div>
         </div>
         <!-- CLOSE SECTION -->
