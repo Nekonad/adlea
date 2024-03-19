@@ -23,8 +23,10 @@
             class="countdown-section container-sm bottomSlide"
             ref="bottomSlide"
           >
-            <h1 class="text-start font-content">Save The Date</h1>
-            <i class="bi bi-bookmark p-2"></i>
+            <div class="saveEvent" @click="addToGoogleCalendar">
+              <h1 class="text-start font-content">Save The Date</h1>
+              <i class="bi bi-bookmark-fill p-2"></i>
+            </div>
             <div class="countdown-date">
               <ul>
                 <li id="days">
@@ -83,6 +85,7 @@ export default {
 
     return { days, hours, minutes, seconds };
   },
+
   // Animation On Scroll
   data() {
     return {
@@ -121,6 +124,32 @@ export default {
         }
       });
     },
+    // Calender
+    addToGoogleCalendar() {
+      const eventDetails = {
+        title: "Rulliana & Bayu Wedding",
+        description: "Kami mengundang bapak/ibu",
+        location: "Surabaya",
+        startDateTime: "20241212\T090000",
+        endDateTime: "20241212\T120000",
+      };
+      const googleCalendarUrl = new URL(
+        "https://www.google.com/calendar/render"
+      );
+      googleCalendarUrl.searchParams.append("action", "TEMPLATE");
+      googleCalendarUrl.searchParams.append("text", eventDetails.title);
+      googleCalendarUrl.searchParams.append(
+        "details",
+        eventDetails.description
+      );
+      googleCalendarUrl.searchParams.append("location", eventDetails.location);
+      googleCalendarUrl.searchParams.append(
+        "dates",
+        eventDetails.startDateTime + "/" + eventDetails.endDateTime
+      );
+      // Membuka tautan ke Google Calendar dalam jendela baru
+      window.open(googleCalendarUrl, "_blank");
+    },
   },
   beforeDestroy() {
     if (this.observer) {
@@ -155,7 +184,12 @@ export default {
 }
 
 /* COUNTDOWN */
+.saveEvent {
+  display: inline-block;
+  cursor: pointer;
+}
 #countdown {
+  padding-top: 2em;
   width: 100%;
   color: var(--color-and);
   margin-bottom: 1rem;

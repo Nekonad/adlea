@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <section id="coupleProfile">
     <div align="center" class="couple-heading m-0">
       <p class="font-content mb-0">
