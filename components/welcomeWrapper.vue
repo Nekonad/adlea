@@ -23,7 +23,7 @@
             class="countdown-section container-sm bottomSlide"
             ref="bottomSlide"
           >
-            <div class="saveEvent" @click="addToGoogleCalendar">
+            <div class="saveEvent" @click="addToCalendar">
               <h1 class="text-start font-content">Save The Date</h1>
               <i class="bi bi-bookmark-fill p-2"></i>
             </div>
@@ -125,30 +125,71 @@ export default {
       });
     },
     // Calender
-    addToGoogleCalendar() {
+    addToCalendar() {
       const eventDetails = {
         title: "Rulliana & Bayu Wedding",
         description: "Kami mengundang bapak/ibu",
         location: "Surabaya",
         startDateTime: "20241212\T090000",
-        endDateTime: "20241212\T120000",
+        endDateTime: "20241212\T100000",
       };
-      const googleCalendarUrl = new URL(
-        "https://www.google.com/calendar/render"
-      );
-      googleCalendarUrl.searchParams.append("action", "TEMPLATE");
-      googleCalendarUrl.searchParams.append("text", eventDetails.title);
-      googleCalendarUrl.searchParams.append(
-        "details",
-        eventDetails.description
-      );
-      googleCalendarUrl.searchParams.append("location", eventDetails.location);
-      googleCalendarUrl.searchParams.append(
-        "dates",
-        eventDetails.startDateTime + "/" + eventDetails.endDateTime
-      );
-      // Membuka tautan ke Google Calendar dalam jendela baru
-      window.open(googleCalendarUrl, "_blank");
+
+      const calendarUrl =
+        "https://www.google.com/calendar/render?action=TEMPLATE" +
+        "&text=" +
+        encodeURIComponent(eventDetails.title) +
+        "&dates=" +
+        encodeURIComponent(
+          eventDetails.startDateTime + "/" + eventDetails.endDateTime
+        ) +
+        "&details=" +
+        encodeURIComponent(eventDetails.description) +
+        "&location=" +
+        encodeURIComponent(eventDetails.location);
+
+      // Membuka tautan ke aplikasi kalender jika tersedia di perangkat pengguna, jika tidak, membuka tautan web
+      const openCalendarLink = () => {
+        const androidLink =
+          "intent://add?title=" +
+          encodeURIComponent(eventDetails.title) +
+          "&description=" +
+          encodeURIComponent(eventDetails.description) +
+          "&location=" +
+          encodeURIComponent(eventDetails.location) +
+          "&startTime=" +
+          encodeURIComponent(eventDetails.startDateTime) +
+          "&endTime=" +
+          encodeURIComponent(eventDetails.endDateTime) +
+          "#Intent;action=android.intent.action.INSERT;category=android.intent.category.APP_CALENDAR;end";
+
+        // Coba membuka tautan aplikasi kalender di Android
+        window.location.href = androidLink;
+
+        // Jika gagal, alihkan ke tautan web
+        setTimeout(() => {
+          window.location.href = calendarUrl;
+        }, 100);
+      };
+
+      // Membuka tautan ke aplikasi kalender di iOS dengan protokol webcal
+      const openCalendariOS = () => {
+        window.location.href =
+          "webcal://www.google.com/calendar/render?action=TEMPLATE&text=My+Event&dates=20240101T000000Z/20240102T000000Z&details=Event+details&location=Event+location";
+      };
+
+      // Cek apakah pengguna mengakses dari perangkat iOS atau Android
+      const userAgent = navigator.userAgent.toLowerCase();
+      if (/iphone|ipad|ipod|android/.test(userAgent)) {
+        // Jika pengguna mengakses dari iOS atau Android, buka tautan yang sesuai
+        if (/iphone|ipad|ipod/.test(userAgent)) {
+          openCalendariOS();
+        } else {
+          openCalendarLink();
+        }
+      } else {
+        // Jika pengguna mengakses dari perangkat lain, buka tautan web
+        window.open(calendarUrl, "_blank");
+      }
     },
   },
   beforeDestroy() {
