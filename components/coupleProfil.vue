@@ -14,7 +14,7 @@
               <div class="photo-frame-female"></div>
               <div class="detail-name mt-3">
                 <h2 class="name mb-3">
-                  Rulliana<br />
+                  Laura<br />
                   Putri
                 </h2>
                 <p class="child-of mb-1 font-content">Putri dari:</p>
@@ -40,7 +40,7 @@
             <div class="orb-deco">
               <div class="photo-frame-male"></div>
               <div class="detail-name mt-3">
-                <h2 class="name mb-3">Bayu Aji<br />Surya Ningrat</h2>
+                <h2 class="name mb-3">Radika<br />Mahendra</h2>
                 <p class="child-of mb-1 font-content">Putra pertama dari:</p>
                 <p class="parents mb-0 font-content">Bapak. lorem</p>
                 <p class="parents mb-0 font-content">Ibu. lorem</p>

@@ -51,9 +51,9 @@
         </p>
         <p class="font-content">Lost of Love,</p>
         <div class="nameCouple">
-          <h1 class="font-title pe-2">Rulliana</h1>
+          <h1 class="font-title pe-2">Laura</h1>
           <h1 class="font-and pe-2">&</h1>
-          <h1 class="font-title pe-2">Bayu</h1>
+          <h1 class="font-title pe-2">Radika</h1>
         </div>
         <div
           class="madeFooter pb-4 pt-5 bottomSlideFooter"

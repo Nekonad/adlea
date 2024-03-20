@@ -6,8 +6,8 @@
           <div class="text-overlay text-light">
             <p>The Wedding of</p>
             <h1>
-              Bayu & <br />
-              Rulliana
+              Laura & <br />
+              Radika
             </h1>
           </div>
         </div>

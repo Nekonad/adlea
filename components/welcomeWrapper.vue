@@ -11,9 +11,9 @@
           </div>
           <div id="welcome-text">
             <div class="couple-name">
-              <h1 class="name-female font-title">Rulliana</h1>
+              <h1 class="name-female font-title">Laura</h1>
               <h4 class="name-and font-and" style="font-size: 2rem">&</h4>
-              <h1 class="name-male font-title">Bayu</h1>
+              <h1 class="name-male font-title">Radika</h1>
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
             class="countdown-section container-sm bottomSlide"
             ref="bottomSlide"
           >
-            <div class="saveEvent" @click="addToCalendar">
+            <div class="saveEvent">
               <h1 class="text-start font-content">Save The Date</h1>
               <i class="bi bi-bookmark-fill p-2"></i>
             </div>
@@ -124,50 +124,6 @@ export default {
         }
       });
     },
-    // Calender
-    addToCalendar() {
-      const eventDetails = {
-        title: "Rulliana & Bayu Wedding",
-        description: "Kami mengundang bapak/ibu",
-        location: "Surabaya",
-        startDateTime: "20241212\T090000",
-        endDateTime: "20241212\T120000",
-      };
-
-      const calendarUrl =
-        "https://www.google.com/calendar/render?action=TEMPLATE" +
-        "&text=" +
-        encodeURIComponent(eventDetails.title) +
-        "&dates=" +
-        encodeURIComponent(
-          eventDetails.startDateTime + "/" + eventDetails.endDateTime
-        ) +
-        "&details=" +
-        encodeURIComponent(eventDetails.description) +
-        "&location=" +
-        encodeURIComponent(eventDetails.location);
-
-      const iOSUrl =
-        "webcal://www.google.com/calendar/render?action=TEMPLATE" +
-        "&text=" +
-        encodeURIComponent(eventDetails.title) +
-        "&dates=" +
-        encodeURIComponent(
-          eventDetails.startDateTime + "/" + eventDetails.endDateTime
-        ) +
-        "&details=" +
-        encodeURIComponent(eventDetails.description) +
-        "&location=" +
-        encodeURIComponent(eventDetails.location);
-
-      const userAgent = navigator.userAgent.toLowerCase();
-
-      if (/iphone|ipad|ipod/.test(userAgent)) {
-        window.location.href = iOSUrl;
-      } else {
-        window.open(calendarUrl, "_blank");
-      }
-    },
   },
   beforeDestroy() {
     if (this.observer) {
@@ -204,7 +160,6 @@ export default {
 /* COUNTDOWN */
 .saveEvent {
   display: inline-block;
-  cursor: pointer;
 }
 #countdown {
   padding-top: 2em;

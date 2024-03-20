@@ -21,7 +21,7 @@
                 <h1
                   class="name-female font-title animate__animated animate__fadeInLeft"
                 >
-                  Rulliana
+                  Laura
                 </h1>
                 <h4 class="name-and font-and animate__animated animate__zoomIn">
                   &
@@ -29,7 +29,7 @@
                 <h1
                   class="name-male font-title animate__animated animate__fadeInRight"
                 >
-                  Bayu
+                  Radika
                 </h1>
               </div>
               <p
