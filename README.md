@@ -1,3 +1,7 @@
+![sec1](https://github.com/noerhdy/adlea/assets/110501543/858c317d-9728-4eee-ae26-7571e820a6b3)
+
+
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
